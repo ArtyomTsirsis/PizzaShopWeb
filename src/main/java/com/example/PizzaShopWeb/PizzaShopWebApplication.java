@@ -27,11 +27,11 @@ public class PizzaShopWebApplication {
 	@Bean
 	public CommandLineRunner productTable(ProductRepository productRepository) {
 		return args -> {
-			productRepository.save(new Product(ProductName.OliveOil, 1.5, 0.2, 25));
-			productRepository.save(new Product(ProductName.Mozzarella, 1.2, 0.15, 45));
-			productRepository.save(new Product(ProductName.Basil, 1.2, 0.3, 30));
-			productRepository.save(new Product(ProductName.Dough, 2, 0.2, 25));
-			productRepository.save(new Product(ProductName.TomatoSauce, 1.7, 0.25, 35));
+			productRepository.save(new Product(ProductName.OliveOil, 1.5, 25, 0.2));
+			productRepository.save(new Product(ProductName.Mozzarella, 1.2, 45, 0.15));
+			productRepository.save(new Product(ProductName.Basil, 1.2, 30, 0.3));
+			productRepository.save(new Product(ProductName.Dough, 2, 25, 0.2));
+			productRepository.save(new Product(ProductName.TomatoSauce, 1.7, 35, 0.25));
 		};
 	}
 
