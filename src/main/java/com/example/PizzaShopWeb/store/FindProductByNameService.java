@@ -18,7 +18,7 @@ public class FindProductByNameService {
     @Autowired
     private Converter converter;
 
-    public List<ProductDto> findByName(ProductName productName) {
+    public List<ProductDto> find(ProductName productName) {
         return StreamSupport.stream(productRepository.findAllByName(productName).spliterator(), false).
                 map(converter::convertToDto).toList();
     }

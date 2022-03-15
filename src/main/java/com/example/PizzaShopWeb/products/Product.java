@@ -1,5 +1,6 @@
 package com.example.PizzaShopWeb.products;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Product")
 public class Product {

@@ -17,7 +17,7 @@ public class FindProductByPriceService {
     @Autowired
     private Converter converter;
 
-    public List<ProductDto> findByPrice(double price) {
+    public List<ProductDto> find(double price) {
         return StreamSupport.stream(productRepository.findAllByPrice(price).spliterator(), false).
                 map(converter::convertToDto).toList();
     }

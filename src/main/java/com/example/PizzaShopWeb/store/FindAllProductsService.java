@@ -17,7 +17,7 @@ public class FindAllProductsService {
     @Autowired
     private Converter converter;
 
-    public List<ProductDto> findAll() {
+    public List<ProductDto> find() {
         return StreamSupport.stream(productRepository.findAll().spliterator(), false).
                 map(converter::convertToDto).toList();
     }

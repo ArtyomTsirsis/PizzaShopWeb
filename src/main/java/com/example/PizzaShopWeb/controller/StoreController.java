@@ -18,7 +18,7 @@ public class StoreController {
     @Autowired
     private ProductRepository productRepository;
     @Autowired
-    private CreateProductService createProductService;
+    private AddProductService addProductService;
     @Autowired
     private DeleteProductService deleteProductService;
     @Autowired
@@ -35,7 +35,7 @@ public class StoreController {
 
     @GetMapping(value = "/find", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ProductDto> findAll() {
-        return findAllProductsService.findAll();
+        return findAllProductsService.find();
     }
 
     @GetMapping(value = "/find/{key}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -45,7 +45,7 @@ public class StoreController {
 
     @PostMapping("/add")
     public void addProduct(@RequestBody ProductDto product) {
-        createProductService.create(product);
+        addProductService.add(product);
     }
 
     @DeleteMapping("/delete")
