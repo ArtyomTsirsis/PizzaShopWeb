@@ -6,8 +6,6 @@ import com.example.PizzaShopWeb.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.StreamSupport;
-
 @Component
 public class DeleteProductService {
 
@@ -18,7 +16,7 @@ public class DeleteProductService {
 
     public void delete(ProductDto product) {
         if (comparator.compare(product)) {
-            productRepository.deleteByName(product.getName());
+            productRepository.deleteAll(productRepository.findAllByName(product.getName()));
         }
     }
 

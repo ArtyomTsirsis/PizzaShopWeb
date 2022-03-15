@@ -1,10 +1,9 @@
 package com.example.PizzaShopWeb.products;
 
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Getter
 @RequiredArgsConstructor

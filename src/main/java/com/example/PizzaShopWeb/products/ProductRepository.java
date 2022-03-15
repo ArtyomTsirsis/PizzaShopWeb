@@ -13,7 +13,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     Iterable<Product> findAllByPrice(double price);
     Iterable<Product> findAllByName(ProductName name);
-    void deleteByName(ProductName name);
 
     @Modifying
     @Transactional

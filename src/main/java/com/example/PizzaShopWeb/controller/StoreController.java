@@ -1,7 +1,6 @@
 package com.example.PizzaShopWeb.controller;
 
 import com.example.PizzaShopWeb.dto.ProductDto;
-import com.example.PizzaShopWeb.products.Product;
 import com.example.PizzaShopWeb.products.ProductRepository;
 import com.example.PizzaShopWeb.store.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.InstanceAlreadyExistsException;
 import java.util.List;
 import java.util.Optional;
 

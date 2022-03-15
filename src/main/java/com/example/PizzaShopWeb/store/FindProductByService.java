@@ -7,8 +7,8 @@ import com.example.PizzaShopWeb.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Component
 public class FindProductByService {
@@ -28,11 +28,14 @@ public class FindProductByService {
     public List<ProductDto> findBy(String key) {
         if (key.matches("\\d") || key.matches("\\d.\\d")) {
             return findProductByPriceService.findByPrice(Double.parseDouble(key));
-        } else if (Arrays.stream(ProductName.values()).anyMatch(n -> n.toString().equalsIgnoreCase(key))) {
-            return findProductByNameService.findByName(ProductName.valueOf(key));
-        } else {
-            return findAllProductsService.findAll();
         }
+        ProductName productName = StreamSupport.stream(productRepository.findAll().spliterator(), false).
+                filter(o -> o.getName().toString().equalsIgnoreCase(key)).
+                map(converter::convertToDto).toList().get(0).getName();
+        if (null != productName) {
+            return findProductByNameService.findByName(productName);
+        }
+        return findAllProductsService.findAll();
     }
 
 }

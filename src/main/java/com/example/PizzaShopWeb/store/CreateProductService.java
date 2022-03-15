@@ -7,8 +7,6 @@ import com.example.PizzaShopWeb.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.management.InstanceAlreadyExistsException;
-
 @Component
 public class CreateProductService {
 
