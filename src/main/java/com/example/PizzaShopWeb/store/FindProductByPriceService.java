@@ -1,28 +1,25 @@
 package com.example.PizzaShopWeb.store;
 
-import com.example.PizzaShopWeb.dto.Comparator;
 import com.example.PizzaShopWeb.dto.Converter;
 import com.example.PizzaShopWeb.dto.ProductDto;
 import com.example.PizzaShopWeb.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.management.InstanceAlreadyExistsException;
+import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Component
-public class CreateProductService {
+public class FindProductByPriceService {
 
     @Autowired
     private ProductRepository productRepository;
     @Autowired
     private Converter converter;
-    @Autowired
-    private Comparator comparator;
 
-    public void create(ProductDto product) {
-        if (!comparator.compare(product)) {
-            productRepository.save(converter.convertFromDto(product));
-        }
+    public List<ProductDto> findByPrice(double price) {
+        return StreamSupport.stream(productRepository.findAllByPrice(price).spliterator(), false).
+                map(converter::convertToDto).toList();
     }
 
 }

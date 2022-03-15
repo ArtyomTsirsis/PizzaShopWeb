@@ -12,11 +12,12 @@ import javax.transaction.Transactional;
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
     Iterable<Product> findAllByPrice(double price);
-    Iterable<Product> findAllByName(com.example.PizzaShopWeb.products.ProductName name);
+    Iterable<Product> findAllByName(ProductName name);
+    void deleteByName(ProductName name);
 
     @Modifying
     @Transactional
-    @Query("UPDATE Product u SET price = :#{#p.price}, markup = :#{#p.markup}, qty = :#{#p.qty} WHERE id = :#{#p.id}")
+    @Query("UPDATE Product u SET price = :#{#p.price}, markup = :#{#p.markup}, qty = :#{#p.qty} WHERE name = :#{#p.name}")
     void updateProduct(@Param("p") Product product);
 
 }

@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.InstanceAlreadyExistsException;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,18 +46,18 @@ public class StoreController {
     }
 
     @PostMapping("/add")
-    public void addProduct(@RequestBody Product product) {
-        productRepository.save(product);
+    public void addProduct(@RequestBody ProductDto product) {
+        createProductService.create(product);
     }
 
     @DeleteMapping("/delete")
-    public void deleteProduct(@RequestBody Product product) {
-        productRepository.delete(product);
+    public void deleteProduct(@RequestBody ProductDto product) {
+        deleteProductService.delete(product);
     }
 
     @PutMapping("/update")
-    public void updateProduct(@RequestBody Product product) {
-        productRepository.updateProduct(product);
+    public void updateProduct(@RequestBody ProductDto product) {
+        updateProductService.update(product);
     }
 
 }
